@@ -1,5 +1,22 @@
 Build Week - Hair Care
 
+DependenciesInstalled: 
++ react-dom@16.12.0
++ axios@0.19.0
++ react-router-dom@5.1.2
++ react-redux@7.1.3
++ react-scripts@3.2.0
++ react@16.12.0
++ redux-logger@3.0.6
++ reselect@4.0.0
++ redux@4.0.4
++ bootstrap@4.3.1
++ react-gesture-gallery@1.1.0
++ react-gesture-responder@2.1.0
++ reactstrap@8.1.1
++ redux-thunk@2.3.0
+
+
 MVP
 1. User can signup/create account as either a “Stylist” or “Customer”. At a minimum, you must require a username, password, location, and an email address at signup. (mobile, web)
 
@@ -32,3 +49,6 @@ Authenticated “Stylist” can search for other nearby “Stylists” on the Ha
 6. Authenticated “Stylist” can update and delete their own profile and photos uploaded using their account (but not photos, reviews or ratings posted by “Customers”) (web, mobile)
 
     -Users can only delete and update what "they" have posted. period. 
+
+
+    
