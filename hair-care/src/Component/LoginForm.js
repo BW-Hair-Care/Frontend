@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
 export function LoginForm() {
+
 	const [user, setUser] = useState({
 		username: "",
 		password: ""
 	});
 
+
 	const handleChange = e => {
 		const { value, name } = e.target;
+
 
 		setUser(...user, { [name]: value });
 	};
