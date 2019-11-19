@@ -1,30 +1,78 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import FormInput from "./FormInput";
+import { selectUser } from "../redux/register/register.selectors";
+import loginUser from "../redux/login/login.actions";
 
-export function LoginForm() {
+class LogIn extends React.Component {
+	constructor(props) {
+		super(props);
 
-	const [user, setUser] = useState({
-		username: "",
-		password: ""
-	});
+		this.state = {
+			username: "",
+			password: ""
+		};
+	}
 
+	handleSubmit = async e => {
+		e.preventDefault();
+		console.log(this.state);
 
-	const handleChange = e => {
+		this.props.logIn(this.state);
+
+		this.setState({
+			username: "",
+			password: ""
+		});
+	};
+
+	handleChange = e => {
 		const { value, name } = e.target;
-
-
-		setUser(...user, { [name]: value });
+		this.setState({ [name]: value });
 	};
 
-	const submitForm = event => {
-		event.preventDefault();
-	};
+	render() {
+		return (
+			<div>
+				<h2>Welcome New User</h2>
 
-	return (
-		<form onSubmit={submitForm}>
-			<label htmlFor="user-login">User Login</label>
-			<input name="username" type="text" onChange={handleChange} />
-			<label htmlFor="password">Password</label>
-			<input name="password" type="text" onChange={handleChange} />
-		</form>
-	);
+				<form className="form" onSubmit={this.handleSubmit}>
+					<div>
+						<FormInput
+							name="username"
+							type="text"
+							handleChange={this.handleChange}
+							value={this.state.username}
+							label="username"
+							required
+						/>
+						<FormInput
+							name="password"
+							type="password"
+							value={this.state.password}
+							handleChange={this.handleChange}
+							label="password"
+							required
+						/>
+					</div>
+					<div>
+						<button className="button" type="submit">
+							Sign In
+						</button>
+					</div>
+				</form>
+			</div>
+		);
+	}
 }
+
+const mapStateToProps = createStructuredSelector({
+	user: selectUser
+});
+
+const mapDispatchToProps = dispatch => ({
+	logIn: user => dispatch(loginUser(user))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

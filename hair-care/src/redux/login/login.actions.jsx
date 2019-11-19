@@ -1,10 +1,11 @@
 import { LoginTypes } from "./login.types";
-import axiosWithAuth from "../../utils/axiosWithAuth";
+// import axiosWithAuth from "../../utils/axiosWithAuth";
+import Axios from "axios";
 
-const loginUser = credentials => {
+const loginUser = credentials => dispatch => {
 	dispatch({ type: LoginTypes.LOGIN_START });
-	axiosWithAuth()
-		.post("", credentials)
+	Axios
+		.post("https://hair-care-backend.herokuapp.com/auth/login", credentials)
 		.then(response =>
 			dispatch({
 				type: LoginTypes.LOGIN_SUCCESS,

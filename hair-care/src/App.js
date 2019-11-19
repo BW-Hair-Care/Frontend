@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { LoginForm } from "./Component/LoginForm";
+import LogIn  from "./Component/LoginForm";
 import Registration from "./Component/registration";
 import ProfileCard from "./Component/profile-card";
 import ProtfolioCard from "./Component/portfolio-card";
@@ -12,12 +12,14 @@ import User from "./page/User";
 function App() {
   return (
     <div className="App">
+    
       <Switch>
         <Route path="/registration" component={Registration} />
-        <Route path="/login" component={LoginForm} />
+        <Route path="/login" component={LogIn} />
         <Route path="/explore" component={Explore} />
         <Route path="/stylist" component={Stylist} />
         <Route path="/user" component={User} />
+
       </Switch>
     </div>
   );
