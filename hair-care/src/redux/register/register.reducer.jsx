@@ -3,6 +3,8 @@ import { RegisterTypes } from './register.types';
 const INITIAL_STATE = {
   addingUser: false,
   addedUser: false,
+  user: [],
+  token: '',
   error: ''
 };
 
