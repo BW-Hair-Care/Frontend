@@ -4,7 +4,7 @@ import axios from "axios";
 const registerUser = user => dispatch => {
 	dispatch({ type: RegisterTypes.REGISTER_START });
 	axios
-		.post("", user)
+		.post("https://hair-care-backend.herokuapp.com/auth/register", user)
     .then(response =>
       {
       //   const token = res.data.token

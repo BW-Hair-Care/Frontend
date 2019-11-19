@@ -16,7 +16,13 @@ class Registration extends React.Component {
 			location: "",
 			userType: null
 		};
+
+		// const stylist = 1
+		// const client = 2
 	}
+
+	stylist = 1;
+	customer = 2;
 
 	componentDidUpdate() {
 		// this.props.welcome()
@@ -25,30 +31,27 @@ class Registration extends React.Component {
 	handleSubmit = async e => {
 		e.preventDefault();
 
-		const { username, email, password, confirmPassword } = this.state;
+		// const { username, email, password } = this.state;
 		console.log(this.state);
-		if (password !== confirmPassword) {
-			alert("passwords don't match");
-			return;
-		}
 
-		 this.props.newUser(this.state);
-        
-        
+		this.props.newUser(this.state);
+
 		this.setState({
 			username: "",
-            password: "",
-            confirmPassword: "",
+			password: "",
+			// confirmPassword: "",
 			email: "",
 			location: "",
-			userType: ""
+			userType: null
 		});
 	};
 
 	handleChange = e => {
 		const { value, name } = e.target;
 
-		this.setState({ [name]: value });
+		name === "userType"
+			? this.setState({ [name]: parseFloat(value) })
+			: this.setState({ [name]: value });
 	};
 
 	render() {
@@ -74,14 +77,14 @@ class Registration extends React.Component {
 							label="password"
 							required
 						/>
-						<FormInput
+						{/* <FormInput
 							name="confirmPassword"
 							type="password"
 							value={this.state.confirmPassword}
 							handleChange={this.handleChange}
 							label="confirmPassword"
 							required
-						/>
+						/> */}
 						<FormInput
 							name="email"
 							type="email"
@@ -102,16 +105,14 @@ class Registration extends React.Component {
 							<FormInput
 								name="userType"
 								type="radio"
-								id="1"
-								value={this.state.userType}
+								value={parseInt(this.stylist)}
 								handleChange={this.handleChange}
 								label="Stylist"
 							/>
 							<FormInput
 								name="userType"
 								type="radio"
-								id="2"
-								value={this.state.userType}
+								value={parseInt(this.customer)}
 								handleChange={this.handleChange}
 								label="Customer"
 							/>
@@ -136,4 +137,4 @@ const mapDispatchToProps = dispatch => ({
 	newUser: user => dispatch(registerUser(user))
 });
 
-export default connect( mapStateToProps,mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
