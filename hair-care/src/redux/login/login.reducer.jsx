@@ -1,9 +1,10 @@
-import { LoginTypes } from "./Login.types";
+import { LoginTypes } from "./login.types";
+import jwt from 'jsonwebtoken'
 
 const INITIAL_STATE = {
-  addingUser: false,
-  addedUser: false,
-  token: null,
+  isLoggedIn: false,
+  isLoggingIn: false,
+  token: localStorage.getItem('token'),
   error: ''
 };
 
@@ -12,23 +13,24 @@ const loginReducer = (state = INITIAL_STATE, action) => {
     case LoginTypes.LOGIN_START:
       return {
         ...state,
-        addingUser: true,
-        addedUser: false,
-        error: '',
+        isLoggingIn: true,
+        isLoggedIn: false,
+        error: ''
       }
     case  LoginTypes.LOGIN_SUCCESS:
       return {
         ...state,
-        addingUser: false,
-        addedUser: true,
-        user: action.payload.user,
-        token: action.payload.data.token,
+    
+        token: action.payload.token,
+        isLoggingIn: false,
+        isLoggedIn: true,
         error: '',
       }
     case  LoginTypes.LOGIN_FAIL:
       return {
         ...state,
-        addedUser: false,
+        isLoggingIn: false,
+        isLoggedIn: false,
         error: action.payload,
       }
     default:

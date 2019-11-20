@@ -1,11 +1,12 @@
 import React from 'react'
 import {SearchBox} from './search-box.component'
+import {CardList} from './card-list.component'
 
-class SearchBar extends Component {
+class SearchBar extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			monsters: [],
+			users: [],
 			searchField: "", 
 		};
 	}
@@ -27,13 +28,12 @@ class SearchBar extends Component {
 		);
 		return (
 			<div className="App">
-				<h1>Monster's Rolodex</h1>
 				<SearchBox
-					placeholder="search users"
+					placeholder="Enter a Location"
 					handleChange={this.handleChange}
 				/>
 
-				<CardList monsters={filteredUsers} />
+				<CardList users={filteredUsers} />
 			</div>
 		);
 	}

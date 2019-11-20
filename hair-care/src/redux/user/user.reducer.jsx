@@ -1,7 +1,9 @@
 import { UsersActionTypes } from './users.types';
+import jwt from 'jsonwebtoken'
 
 const INITIAL_STATE = {
-  user: null
+ user: jwt.decode(localStorage.getItem('token')),
+
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -9,7 +11,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UsersActionTypes.SET_CURRENT_USER:
       return {
         ...state,
-        currentUser: action.payload
+        user: action.payload
       };
     default:
       return state;

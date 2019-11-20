@@ -1,0 +1,18 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    margin: 1.5% auto;
+    border: solid;
+    border-radius: 12px;
+}
+
+.search{
+    margin: 1.5% auto;
+}
+.card-list{
+    display: flex;
+    flex-wrap:wrap;
+    width: 700px;
+    margin: 1.5% auto;
+
+}
