@@ -1,9 +1,10 @@
 import { RegisterTypes } from './register.types';
+import jwt from 'jsonwebtoken'
 
 const INITIAL_STATE = {
   addingUser: false,
   addedUser: false,
-  user: [],
+  user: jwt.decode(localStorage.getItem('token')),
   token: '',
   error: ''
 };
@@ -23,7 +24,6 @@ const registerReducer = (state = INITIAL_STATE, action) => {
         addingUser: false,
         addedUser: true,
         user: action.payload.user,
-        token: action.payload.data.token,
         error: '',
       }
     case  RegisterTypes.REGISTER_FAIL:

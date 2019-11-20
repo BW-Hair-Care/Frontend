@@ -32,10 +32,10 @@ class Registration extends React.Component {
 		e.preventDefault();
 
 		// const { username, email, password } = this.state;
-		console.log(this.state);
+		console.log("hey from reg", this.state);
 
 		this.props.newUser(this.state);
-
+		this.props.history.push("/login");
 		this.setState({
 			username: "",
 			password: "",

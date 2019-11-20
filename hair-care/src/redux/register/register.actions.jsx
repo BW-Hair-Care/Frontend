@@ -7,8 +7,8 @@ const registerUser = user => dispatch => {
 		.post("https://hair-care-backend.herokuapp.com/auth/register", user)
     .then(response =>
       {
-      //   const token = res.data.token
-      //   localStorage.setItem('token', token)
+        const token = response.data.token
+        localStorage.setItem('token', token)
 			dispatch({
 				type: RegisterTypes.REGISTER_SUCCESS,
 				payload: response.data

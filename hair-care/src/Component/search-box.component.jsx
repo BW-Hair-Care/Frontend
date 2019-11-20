@@ -1,4 +1,5 @@
 import React from "react";
+import './components.css'
 
 export const SearchBox = ({ placeholder, handleChange }) => (
 	<input

@@ -18,15 +18,15 @@ class LogIn extends React.Component {
 	handleSubmit = async e => {
 		e.preventDefault();
 		console.log(this.state);
+		console.log('props', this.props)
+		// console.log(this.props.history);
+		 this.props.loginUser(this.state, this.props.history);
 
-		this.props.logIn(this.state);
-
-		this.setState({
-			username: "",
-			password: ""
-		});
-	};
-
+	// 	await localStorage.getItem("token")
+	// 		? this.props.history.push("/explore")
+	// 		: this.props.history.push("/login");
+	// 
+	}
 	handleChange = e => {
 		const { value, name } = e.target;
 		this.setState({ [name]: value });
@@ -71,8 +71,6 @@ const mapStateToProps = createStructuredSelector({
 	user: selectUser
 });
 
-const mapDispatchToProps = dispatch => ({
-	logIn: user => dispatch(loginUser(user))
-});
+const mapDispatchToProps = { loginUser}
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
