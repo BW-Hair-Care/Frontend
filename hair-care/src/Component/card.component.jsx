@@ -1,7 +1,11 @@
 import React from "react";
 import './components.css'
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-const getProfile = () => {};
+const getProfile = (props) => {
+	axiosWithAuth(`stylists/${props}`)
+	.then(res=>(console.log(res)))
+};
 
 export const Card = props => (
 	<div className="card-container">
@@ -14,6 +18,7 @@ export const Card = props => (
 		</div>{" "}<div>
 		<h3>{props.user.username}</h3>
 		<h6>{props.user.location}</h6>
-		<button onClick={getProfile}>Veiw Profile</button></div>
+		{/* <button onClick={getProfile} id={props.user.id}>Veiw Profile</button> */}
+		</div>
 	</div>
 );

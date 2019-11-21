@@ -14,7 +14,7 @@ class SearchBar extends React.Component {
 	componentDidMount() {
 		fetch("https://hair-care-backend.herokuapp.com/stylists")
 			.then(res => res.json())
-			.then(users => this.setState({ users: users }));
+			.then(users => this.setState({ users: users }))
 	}
 
 	handleChange = e => {
@@ -23,9 +23,22 @@ class SearchBar extends React.Component {
 
 	render() {
 		const { users, searchField } = this.state;
-		const filteredUsers = users.filter(user =>
-			user.location.toLowerCase().includes(searchField.toLowerCase())
+		console.log(users)
+
+
+		
+		let stylists = users.filter(user => {
+			if(user.userType === 1 ){
+			  return user;
+			};
+		   })
+		
+		const filteredUsers = stylists.filter(stylist =>
+			stylist.location.toLowerCase().includes(searchField.toLowerCase())
 		);
+
+		console.log(filteredUsers)
+		
 		return (
 			<div className="App">
 				<SearchBox
