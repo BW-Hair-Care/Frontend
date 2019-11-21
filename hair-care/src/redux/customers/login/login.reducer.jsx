@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   error: ''
 };
 
-const loginReducer = (state = INITIAL_STATE, action) => {
+const loginCustomerReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case LoginTypes.LOGIN_START:
       return {
@@ -21,7 +21,7 @@ const loginReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
     
-        token: action.payload.token,
+        token: action.payload,
         isLoggingIn: false,
         isLoggedIn: true,
         error: '',
@@ -38,4 +38,4 @@ const loginReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default loginReducer;
+export default loginCustomerReducer;

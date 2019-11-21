@@ -1,12 +1,15 @@
 import { combineReducers } from "redux";
-import userReducer from "./user/user.reducer";
-import registerReducer from "./register/register.reducer";
-import loginReducer from "./login/login.reducer";
-import postReducer from "./post-Review/post.reducer";
+import loginCustomerReducer from "./customers/login/login.reducer";
+import loginStylistReducer from "./stylists/login/login.reducer";
+import registerCustomerReducer from "./customers/register/register.reducer";
+import registerStylistReducer from "./stylists/register/register.reducer";
+import postReducer from "./customers/post-Review/post.reducer";
+
 
 export default combineReducers({
-	review: postReducer,
-	user: userReducer,
-	register: registerReducer,
-	login: loginReducer
+	loginCustomer: loginCustomerReducer,
+	loginStylist: loginStylistReducer,
+	registerCustomer: registerCustomerReducer,
+	registerStylist: registerStylistReducer,
+	postReview: postReducer
 });

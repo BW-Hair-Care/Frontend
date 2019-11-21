@@ -1,10 +1,10 @@
 import { RegisterTypes } from "./register.types";
 import axios from "axios";
 
-const registerUser = user => dispatch => {
+const registerStylist = stylist => dispatch => {
 	dispatch({ type: RegisterTypes.REGISTER_START });
 	axios
-		.post("https://hair-care-backend.herokuapp.com/auth/register", user)
+		.post("https://haircarebackend.herokuapp.com/api/stylists/", stylist)
     .then(response =>
       {
         const token = response.data.token
@@ -19,4 +19,4 @@ const registerUser = user => dispatch => {
 		);
 };
 
-export default registerUser;
+export default registerStylist;

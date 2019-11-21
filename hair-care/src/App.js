@@ -1,27 +1,29 @@
 import React from "react";
 import "./App.css";
-import LogIn  from "./Component/LoginForm";
-import Registration from "./Component/registration";
-import ProfileCard from "./Component/profile-card";
-import PortfolioCard from "./Component/portfolio-card";
 import { Route, Switch } from "react-router-dom";
-import Explore from "./page/Explore";
 import PrivateRoute from "./utils/PrivateRoute";
-import StylistProfile from "./page/Stylist";
-import Home from "./Component/Welcome";
-import Review from "./Component/reviewForm";
+import CustomerRegistration from './Component/customer/registration'
+import StylistRegistration from './Component/stylist/registration'
+import LoginCustomer from "./Component/customer/LoginForm";
+import LoginStylist from "./Component/stylist/LoginForm";
+import Landing from "./page/Landing";
+import ExplorePage from "./page/Explore";
+
 
 function App() {
   return (
     <div className="App">
-    <Review />
       <Switch>
-        <Route path="/register" component={Registration} />
-        <Route path="/login" component={LogIn} />
-        <PrivateRoute path="/explore" component={Explore} />
-        <PrivateRoute exact path='/home' component={Home} />
-        {/* <Route path="/stylist" component={StylistProfile} /> */}
-        {/* <Route path="/user" component={StylistReview} /> */}
+        <Route exact path='/' component={Landing} />
+        <Route path="/stylist-login" component={LoginStylist} />
+        <Route path="/customer-login" component={LoginCustomer} />
+        <Route path="/register-stylist" component={StylistRegistration} />
+        <Route path="/register-customer" component={CustomerRegistration} />
+
+        <PrivateRoute path="/explore" component={ExplorePage} />
+
+
+
 
       </Switch>
     </div>

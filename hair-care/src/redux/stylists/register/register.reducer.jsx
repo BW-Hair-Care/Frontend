@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   error: ''
 };
 
-const registerReducer = (state = INITIAL_STATE, action) => {
+const registerStylistReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case RegisterTypes.REGISTER_START:
       return {
@@ -23,7 +23,7 @@ const registerReducer = (state = INITIAL_STATE, action) => {
         ...state,
         addingUser: false,
         addedUser: true,
-        user: action.payload.user,
+        user: action.payload,
         error: '',
       }
     case  RegisterTypes.REGISTER_FAIL:
@@ -37,4 +37,4 @@ const registerReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default registerReducer;
+export default registerStylistReducer;

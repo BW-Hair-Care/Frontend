@@ -2,14 +2,18 @@ import { LoginTypes } from "./login.types";
 // import axiosWithAuth from "../../utils/axiosWithAuth";
 import axios from "axios";
 
-const loginUser = (credentials, props) => dispatch => {
+const loginCustomer = (credentials, props) => dispatch => {
 	console.log("creds", credentials);
-	console.log('propz',props)
+	console.log("propz-user", props);
 	dispatch({ type: LoginTypes.LOGIN_START });
 	axios
-		.post("https://hair-care-backend.herokuapp.com/auth/login", credentials, {
-			headers: credentials
-		})
+		.post(
+			"https://haircarebackend.herokuapp.com/api/customers/login",
+			credentials,
+			{
+				headers: credentials
+			}
+		)
 
 		.then(response => {
 			const token = response.data.token;
@@ -20,7 +24,7 @@ const loginUser = (credentials, props) => dispatch => {
 			});
 			console.log("hey props", props);
 			console.log("hey data", response.data);
-			props.push('/explore')
+			props.push("/explore");
 		})
 
 		.catch(err =>
@@ -28,4 +32,4 @@ const loginUser = (credentials, props) => dispatch => {
 		);
 };
 
-export default loginUser;
+export default loginCustomer;

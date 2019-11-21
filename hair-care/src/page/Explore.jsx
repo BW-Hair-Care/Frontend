@@ -1,12 +1,12 @@
 import React from "react";
 import SearchBar from "../Component/SearchBar.component";
-import Welcome from "../Component/Welcome";
+import SearchStylists from "../Component/searchBar/search.component";
 
 const ExplorePage = () => {
 	return (
 		<div>
-			{/* <Welcome /> */}
-			<SearchBar />
+			hi from explore
+			<SearchStylists />
 		</div>
 	);
 };

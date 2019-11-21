@@ -4,7 +4,7 @@ import axios from 'axios';
   const token = localStorage.getItem('token');
   // return an instance of axios
   return axios.create({
-    baseURL: 'https://hair-care-backend.herokuapp.com/',
+    baseURL: 'https://haircarebackend.herokuapp.com',
     headers: {
       Authorization: token
     }
