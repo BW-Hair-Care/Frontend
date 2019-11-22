@@ -1,19 +1,27 @@
 import React from "react";
-import './components.css'
+import "./components.css";
+import { Link } from "react-router-dom";
 
-const getProfile = () => {};
+import Reviews from './review/viewReviews'
+import ReviewForm from "./review/reviewForm";
 
-export const Card = props => (
+
+const Card = ({user}) => (
 	<div className="card-container">
 		<div>
 			{" "}
-			<img
+			<Link to={`/stylist/${user.id}`}><img
 				alt="user"
-				src={`https://robohash.org/${props.user.id}?set=set5&size=140x140`}
-			/>
-		</div>{" "}<div>
-		<h3>{props.user.username}</h3>
-		<h6>{props.user.location}</h6>
-		<button onClick={getProfile}>Veiw Profile</button></div>
+				src={`https://robohash.org/${user.id}?set=set5&size=140x140`}
+			/></Link>
+		</div>{" "}
+		<div>
+			<h3>{user.username}</h3>
+			<h6>{user.location}</h6>
+			{/* <Reviews  id={user.id} /> */}
+			<ReviewForm  id={user.id}/>
+		</div>
 	</div>
 );
+
+export default Card

@@ -1,13 +1,13 @@
-import React from 'react'
-import SearchBar from '../Component/SearchBar.component'
+import React from "react";
+import SearchBar from "../Component/SearchBar.component";
 
 
-const ExplorePage = () =>{
+const ExplorePage = () => {
+	return (
+		<div>
+			<SearchBar />
+		</div>
+	);
+};
 
-
-    return(
-        <SearchBar />
-    )
-}
-
-export default ExplorePage
+export default ExplorePage;

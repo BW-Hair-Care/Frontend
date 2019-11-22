@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
+import getAPI from "./getUsers/getUsers.actions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -12,5 +13,6 @@ const store = createStore(
 	composeEnhancers(applyMiddleware(...middlewares))
 );
 
+store.dispatch(getAPI())
 
 export default store;
