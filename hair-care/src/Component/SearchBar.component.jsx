@@ -1,56 +1,46 @@
-import React from 'react'
-import {SearchBox} from './search-box.component'
-import {CardList} from './card-list.component'
+import React, { useState } from "react";
+import { SearchBox } from "./search-box.component";
+import { CardList } from "./card-list.component";
+import { connect } from "react-redux";
+import { selectUsers } from "../redux/getUsers/getUsers.selector";
+import { createStructuredSelector } from "reselect";
 
-class SearchBar extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			users: [],
-			searchField: "", 
-		};
-	}
 
-	componentDidMount() {
-		fetch("https://hair-care-backend.herokuapp.com/stylists")
-			.then(res => res.json())
-			.then(users => this.setState({ users: users }))
-	}
+const SearchBar = ({allUsers}) => {
+	const [searchField, setSearchField] = useState("");
 
-	handleChange = e => {
-		this.setState({ searchField: e.target.value });
+	let users = allUsers
+
+	console.log("usersfdhd", users);
+	
+	const handleChange = e => {
+		setSearchField(e.target.value);
 	};
 
-	render() {
-		const { users, searchField } = this.state;
-		console.log(users)
+	let stylists = users.filter(user => {
+		if (user.userType === 1) {
+			return user;
+		}
+	});
+
+	const filteredUsers = stylists.filter(stylist =>
+		stylist.location.toLowerCase().includes(searchField.toLowerCase())
+	);
+
+	console.log(filteredUsers);
+
+	return (
+		<div className="App">
+			<SearchBox placeholder="Enter a Location" handleChange={handleChange} />
+
+			<CardList users={filteredUsers} />
+		</div>
+	);
+};
+
+const mapStateToProps = createStructuredSelector({
+	allUsers: selectUsers
+});
 
 
-		
-		let stylists = users.filter(user => {
-			if(user.userType === 1 ){
-			  return user;
-			};
-		   })
-		
-		const filteredUsers = stylists.filter(stylist =>
-			stylist.location.toLowerCase().includes(searchField.toLowerCase())
-		);
-
-		console.log(filteredUsers)
-		
-		return (
-			<div className="App">
-				<SearchBox
-					placeholder="Enter a Location"
-					handleChange={this.handleChange}
-				/>
-
-				<CardList users={filteredUsers} />
-			</div>
-		);
-	}
-}
-
-
-export default SearchBar
+export default connect(mapStateToProps)(SearchBar);

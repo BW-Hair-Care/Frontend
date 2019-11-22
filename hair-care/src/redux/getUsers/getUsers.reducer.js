@@ -1,4 +1,4 @@
-import { getUsersActions } from "./smurf.types";
+import { getUsersActions } from "./getUsers.types";
 
 const initialState = {
 	users: [],
